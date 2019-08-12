@@ -1,0 +1,7 @@
+@import './vars'; //importing initialized variables to global css file 
+.form-control{
+    border-color: $secondary-color !important;
+}
+.form-control:focus {
+    border-color: $secondary-color !important;
+}

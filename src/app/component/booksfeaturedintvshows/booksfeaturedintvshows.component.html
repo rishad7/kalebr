@@ -1,0 +1,124 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Books Featured in TV Shows</a>
+    </h4>
+  </div>
+  <div id="collapse1" class="panel-collapse collapse in">
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-inline" (submit)="bookFeaturedInTvShows()">
+            <div class="input-group rsd-full-width-search">
+              <input [(ngModel)]="search" name="search" type="text" class="form-control" size="50"
+                placeholder="Type here(Title OR Author OR ISBN)">
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-danger rsd-button">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <app-loading-spinner *ngIf="show_spinner; else elseBlock"></app-loading-spinner>
+
+      <h5 *ngIf="show_msg" class="text-center rsd-error">No more books to display</h5>
+
+      <ng-template #elseBlock>
+        <div class="container-fluid rsd-card">
+          <div class="row">
+
+            <div *ngIf="book_details_count" class="col-sm-12 rsd-books-count">
+              <span>Books Count : <span class="rsd-count-number">{{book_details_count}}</span></span>
+            </div>
+
+            <div *ngFor="let bd of book_details; let i = index">
+              <div *ngIf="i != 0 && i % 2 == 0">
+                <div class="row"></div>
+              </div>
+              <div id="rsd_card_div_{{i}}" class="col-sm-6">
+                <div class="inside">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <h5 class="rsd-title-heading">{{bd.title}}</h5>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row rsd-padding-20">
+                    <div class="col-sm-4">
+                      <a href="{{bd.bookLink}}" target="_blank">
+                        <div class="rsd-container">
+                          <img src="assets/images/book.jpg" alt="{{bd.title}}"
+                            class="rsd-book-img img-responsive -overlay-image">
+                          <div class="rsd-overlay">
+                            <div class="rsd-overlay-text">{{bd.author}}</div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="rsd-shows-count">
+                        <ul class="list-group">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Shows Count
+                            <span class="badge rsd-badge badge-primary badge-pill">{{ bd.showsCount }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+
+                          <table *ngIf="bd.showsCount" class="table table-striped table-dark">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Show Name</th>
+                                <th scope="col">Show Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let x of bd.shows; let k = index">
+                                <th scope="row">{{ k + 1 }}</th>
+                                <td>{{x.showName}}</td>
+                                <td>{{x.showDate | date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="list-group rsd-isbn">
+                          <span class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1 rsd-color"><strong>ISBNS</strong></h5>
+                            </div>
+                            <p class="mb-1 rsd-word-wrap">{{bd.isbns}}</p>
+                          </span>
+                        </div>
+                      </div>
+
+                  </div>
+
+
+                  <div class="row rsd-margin-bottom">
+                    <div class="col-sm-12">
+                      <hr>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                      <span class="rsd-review-date">Published on {{bd.pubDate | date}}</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

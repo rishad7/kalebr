@@ -1,0 +1,114 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Critic Reviews of a Book</a>
+    </h4>
+  </div>
+  <div id="collapse1" class="panel-collapse collapse in">
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <form class="form-inline" (submit)="criticReviews()">
+            <div class="input-group rsd-full-width-search">
+              <input value="{{search}}" [(ngModel)]="search" name="search" type="text" class="form-control" size="50"
+                placeholder="Type here(Title OR Author OR ISBN)">
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-danger rsd-button">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <app-loading-spinner *ngIf="show_spinner; else elseBlock"></app-loading-spinner>
+
+      <h5 *ngIf="show_msg" class="text-center rsd-error">No more books to display</h5>
+
+      <ng-template #elseBlock>
+        <div class="container-fluid rsd-card">
+          <div class="row">
+
+            <div *ngIf="total_results" class="col-sm-12 rsd-books-count">
+              <span>Total Results : <span class="rsd-count-number">{{total_results}}</span></span>
+            </div>
+
+            <div *ngIf="show_data">
+
+              <div id="rsd_card_div_0" class="col-sm-12">
+                <div class="inside">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <h3 class="rsd-title-heading">{{book_details.title}} <span class="rsd-font-size-16">by {{book_details.author}}</span></h3>
+                      <h4>{{book_details.sub_title}}</h4>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row rsd-padding-20">
+                    <div class="col-sm-4">
+                      <div class="rsd-container">
+                        <img style="cursor: pointer;" title="{{book_details.title}}: {{book_details.sub_title}}" src="assets/images/book.jpg" alt="{{book_details.title}}" class="rsd-book-img img-responsive">
+                      </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="rsd-shows-count">
+                        <ul class="list-group">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Review Count
+                            <span class="badge rsd-badge badge-primary badge-pill">{{book_details.review_count}}</span>
+                          </li>
+                        </ul>
+                        <ul class="list-group">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Pages
+                            <span class="badge rsd-badge badge-primary badge-pill">{{book_details.pages}}</span>
+                          </li>
+                        </ul>
+                        <p>Published on {{book_details.release_date | date}} . {{book_details.pages}} pages</p>
+                        <p>
+                          <span>Genres : </span>
+                          <span>{{book_details.genre}}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12">
+
+                      <div class="list-group rsd-isbn">
+                        <a *ngFor="let cr of book_details.critic_reviews" href="{{cr.review_link}}" target="_blank"
+                          class="list-group-item list-group-item-action flex-column align-items-start">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="rsd_review_author">{{cr.source}}</h5>
+                            <img class="rsd-rating-img" src="{{cr.smiley_or_sad}}">
+                            <small class="text-muted"> on {{cr.review_date | date}}</small>
+                          </div>
+                          <p class="rsd-color">{{cr.snippet}}</p>
+                          <div>
+                            <img alt="Source Logo" class="img-responsive rsd-img-height" src="{{cr.source_logo}}">
+                          </div>
+                        </a>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="row rsd-margin-bottom">
+                    <div class="col-sm-12">
+                      <hr>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                      <span class="rsd-review-date">All: {{all}} | Positive: {{positive}} | Negative: {{negative}}</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<!-- header start -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">
+        <!-- using logo of kalebr -->
+        <img src="assets/images/logo.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropbtn" href="#">
+            Genres
+          </a>
+          <div class="dropdown-content">
+            <!-- list of all genres start -->
+            <a href="#">All Books</a>
+            <a href="#">Bestsellers</a>
+            <a href="#">Action &amp; Adventure</a>
+            <a href="#">Arts &amp; Photography</a>
+            <a href="#">Biographies &amp; Memoirs</a>
+            <a href="#">Business &amp; Economics</a>
+            <a href="#">Children's Books</a>
+            <a href="#">Comics &amp; Graphic Novels</a>
+            <a href="#">Computers &amp; Technology</a>
+            <a href="#">Cooking</a>
+            <a href="#">Crafts, Hobbies &amp; Home</a>
+            <a href="#">Crime</a>
+            <a href="#">Current Affairs</a>
+            <a href="#">Education &amp; Reference</a>
+            <a href="#">Erotica</a>
+            <a href="#">Gay &amp; Lesbian</a>
+            <a href="#">Health, Fitness &amp; Dieting</a>
+            <a href="#">History</a>
+            <a href="#">Horror</a>
+            <a href="#">Humor &amp; Entertainment</a>
+            <a href="#">Fiction</a>
+            <a href="#">Non-Fiction</a>
+            <a href="#">Law &amp; Philosophy</a>
+            <a href="#">Literature &amp; Fiction</a>
+            <a href="#">Mystery, Thriller &amp; Suspense</a>
+            <a href="#">Nature &amp; Wildlife</a>
+            <a href="#">Other</a>
+            <a href="#">Parenting &amp; Relationships</a>
+            <a href="#">Political &amp; Social Sciences</a>
+            <a href="#">Professional &amp; Technical</a>
+            <a href="#">Religion &amp; Spirituality</a>
+            <a href="#">Romance</a>
+            <a href="#">Science &amp; Math</a>
+            <a href="#">Science Fiction &amp; Fantasy</a>
+            <a href="#">Self Help</a>
+            <a href="#">Sports &amp; Outdoors</a>
+            <a href="#">Travel</a>
+            <a href="#">War</a>
+            <a href="#">Westerns</a>
+            <a href="#">Young Adult</a>
+            <!-- list of all genres end -->
+          </div>
+        </li>
+        <li class="dropdown">
+          <a class="dropbtn" href="#">Lists</a>
+          <div class="dropdown-content">
+            <a href="#">NYTimes Reviews</a>
+            <a href="#">NPR Reviews</a>
+            <a href="#">IndieReader Curated Self-Pubbed Reviews</a>
+          </div>
+        </li>
+        <li class="dropdown"><a class="dropbtn" href="#">Login</a></li>
+        <li class="dropdown">
+          <a class="dropbtn" href="#">About</a>
+          <div class="dropdown-content">
+            <a href="#">About Us</a>
+            <a href="#">Critic Info</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+            <a href="#">Blog</a>
+            <a href="#">API</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- header end -->
+<div class="jumbotron text-center">
+  <h2>Book reviews from critics</h2>
+  <p>Search books by title or author</p>
+  <!-- autocomplete search. It will show the autocomplete div if type 3 or more words in search field -->
+  <form class="form-inline">
+    <div class="input-group">
+      <div class="rsd-autocomplete">
+        <input id="rsd_autocomplete_value" (keydown)="keyPress($event)" type="text" class="form-control" size="50"
+          placeholder="Type here">
+      </div>
+
+      <div (clickOutside)="onClickedOutside($event)" *ngIf="show_autocomplete_div" class="rsd-autocomplete-items">
+        <div *ngFor="let ad of autocomplete_data; let i = index">
+          <span (click)="selectedSearch(i)" [attr.data-id]="ad.href" id="autocomplete_span_{{i}}">{{ad.title}}</span>
+        </div>
+      </div>
+
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-danger rsd-button">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container rsd-container">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- when url routing, the router-outlet replace with corresponding component -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<!-- footer position changing corresponds to the content. If the content is very low, it will stick in to bottom of the page -->
+<footer class="container-fluid text-center rsd-footer">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Created By <a href="https://www.mohammedrishadkv.com" title="Visit My Site">Rishad</a></p>
+</footer>

@@ -1,0 +1,194 @@
+@import '../../../scss/vars';
+
+.panel-default {
+    border-color: $footer-background;
+}
+.panel-default > .panel-heading {
+    background-color: $footer-background;
+    border-color: $footer-background;
+}
+.panel-title {
+    color: $white;
+}
+.rsd-card {
+    padding-bottom: 15px;
+  }
+  .rsd-card>.row>div {
+    margin-top: 15px;
+  }
+  .rsd-card .inside {
+    border: 1px solid white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+  }
+  .rsd-book-img {
+    border: 2px solid $secondary-color;
+    border-radius: 20px;
+  }
+  .rsd-padding-20 {
+    padding: 0px 20px 0px 20px;
+  }
+  .rsd-read-more-btn {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $white;
+    border-radius: 20px;
+  }
+  .rsd-read-more-btn:hover {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+  .rsd-half-text {
+    height: 60px;
+    overflow: hidden;
+  }
+  .rsd-full-text {
+    height: auto;
+    overflow: unset;
+  }
+  .rsd-title-heading {
+    color: $secondary-color;
+    font-weight: bold;
+  }
+  .rsd-container {
+    position: relative;
+  }
+  
+  .rsd-overlay-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .rsd-overlay {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background-color: $primary-color;
+    overflow: hidden;
+    width: 100%;
+    height:0;
+    transition: .5s ease;
+    opacity: 0.8;
+  }
+  
+  .rsd-container:hover .rsd-overlay {
+    bottom: 0;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid $secondary-color;
+  }
+  
+  .rsd-overlay-text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .rsd-review-div{
+    margin-top: 10px;
+  }
+  .rsd-publication-name{
+    font-size: 18px;
+    font-weight: bold;
+    color: $secondary-color;
+  }
+  .rsd-rating{
+      float: right;
+      color: green;
+  }
+  .rsd-review-img{
+    width: 25px;
+    height: 16px;
+}
+.rsd-review-date {
+    font-weight: bold;
+    color: #244b90;
+}
+.rsd-margin-bottom{
+    margin-bottom: 10px;
+}
+.rsd-more-review{
+    word-wrap: anywhere;
+}
+.rsd-see-full-list-btn {
+    width: 100%;
+    padding: 3px;
+    background-color: $primary-color;
+    border-color: $secondary-color;
+}
+.rsd-quick-access-heading{
+  color: $white;
+}
+.rsd-button {
+  background-color: $button-color;
+  border-color: $secondary-color;
+  width: 100%;
+}
+.rsd-button:hover {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+.rsd-padding-10{
+  padding: 10px;
+}
+.form-control:focus {
+    border-color: $secondary-color;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(64, 72, 117);
+}
+.rsd-full-width-search{
+    width: 100%;
+}
+.rsd-books-count{
+  text-align: center;
+font-size: 16px;
+margin-bottom: 15px;
+font-weight: bold;
+color: $secondary-color;
+}
+.rsd-count-number{
+  color: $primary-color;
+}
+
+.rsd-shows-count{
+font-weight: bold;
+color: $secondary-color;
+}
+.rsd-shows-number{
+  color: $primary-color;
+}
+.rsd-badge {
+  background-color: $primary-color;
+  color: $white;
+}
+.rsd-isbn{
+  margin-bottom: 0px !important;
+  margin-top: 20px;
+}
+.rsd-word-wrap{
+  word-wrap: anywhere;
+}
+.rsd-color{
+  color: $secondary-color;
+}
+.rsd_review_author{
+    font-size: 16px;
+    font-weight: bold;
+    color: $secondary-color;
+}
+.rsd-img-height{
+    height: 100px;
+}
+.rsd-rating-img{
+    height: 15px;
+}
+.rsd-font-size-16{
+    font-size: 16px;
+}

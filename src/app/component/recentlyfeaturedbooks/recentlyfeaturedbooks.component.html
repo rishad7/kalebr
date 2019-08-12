@@ -1,0 +1,164 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Recently Featured Books</a>
+    </h4>
+  </div>
+  <div id="collapse1" class="panel-collapse collapse in">
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+          <form (submit)="recentlyFeaturedBooks()">
+            <div class="form-group">
+              <label for="sel1">Select Shows:</label>
+              <select [(ngModel)]="search" name="search" class="form-control" id="sel1">
+
+                <option value="5673">60 Minutes</option>
+                <option value="5674">Access Hollywood</option>
+                <option value="5675">All Things Considered</option>
+                <option value="5683">CBS Sunday Morning</option>
+                <option value="5684">CBS This Morning</option>
+                <option value="5685">Charlie Rose</option>
+                <option value="5686">Chelsea Lately</option>
+                <option value="5687">Colbert Report</option>
+                <option value="5690">Daily Show with Jon Stewart</option>
+                <option value="5693">Diane Rehm Show - NPR</option>
+                <option value="5694">Dr. Oz</option>
+                <option value="5695">Dr. Phil</option>
+                <option value="5697">Ellen Degeneres</option>
+                <option value="5699">Extra</option>
+                <option value="5702">Fresh Air - NPR</option>
+                <option value="5706">Good Morning America</option>
+                <option value="5707">Tonight Show with Jay Leno</option>
+                <option value="5736">Good Morning Texas - Buy The Book</option>
+                <option value="5744">Katie</option>
+                <option value="5747">Last Call with Carson Daly</option>
+                <option value="5749">Late Night With Jimmy Fallon</option>
+                <option value="5755">Marketplace - PRI</option>
+                <option value="5757">Meet the Press</option>
+                <option value="5851">NPR Books</option>
+                <option value="5852">On Point</option>
+                <option value="5855">PBS News Hour</option>
+                <option value="5858">Rachael Madow</option>
+                <option value="5859">Rachael Ray</option>
+                <option value="5863">Steve Harvey</option>
+                <option value="5864">Studio 360</option>
+                <option value="5865">Talk of the Nation</option>
+                <option value="5866">Tavis Smiley</option>
+                <option value="5867">Tell Me More</option>
+                <option value="5869">The Chew</option>
+                <option value="5873">The O'Reilly Factor</option>
+                <option value="5874">The Talk</option>
+                <option value="5875">The View</option>
+              </select>
+
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-danger rsd-new-btn rsd-button">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <app-loading-spinner *ngIf="show_spinner; else elseBlock"></app-loading-spinner>
+
+      <h5 *ngIf="show_msg" class="text-center rsd-error">No more books to display</h5>
+
+      <ng-template #elseBlock>
+        <div class="container-fluid rsd-card">
+          <div class="row">
+
+            <div *ngIf="book_details_count" class="col-sm-12 rsd-books-count">
+              <span>Books Count : <span class="rsd-count-number">{{book_details_count}}</span></span>
+            </div>
+
+            <div *ngFor="let bd of book_details; let i = index">
+              <div *ngIf="i != 0 && i % 2 == 0">
+                <div class="row"></div>
+              </div>
+              <div id="rsd_card_div_{{i}}" class="col-sm-6">
+                <div class="inside">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <h5 class="rsd-title-heading">{{bd.title}}</h5>
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row rsd-padding-20">
+                    <div class="col-sm-4">
+                      <a href="{{bd.bookLink}}" target="_blank">
+                        <div class="rsd-container">
+                          <img src="assets/images/book.jpg" alt="{{bd.title}}"
+                            class="rsd-book-img img-responsive -overlay-image">
+                          <div class="rsd-overlay">
+                            <div class="rsd-overlay-text">{{bd.author}}</div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="rsd-shows-count">
+                        <ul class="list-group">
+                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Shows Count
+                            <span class="badge rsd-badge badge-primary badge-pill">{{ bd.showsCount }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+
+                          <table *ngIf="bd.showsCount" class="table table-striped table-dark">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Show Name</th>
+                                <th scope="col">Show Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let x of bd.shows; let k = index">
+                                <th scope="row">{{ k + 1 }}</th>
+                                <td>{{x.showName}}</td>
+                                <td>{{x.showDate | date}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                      <div class="list-group rsd-isbn">
+                        <span class="list-group-item list-group-item-action flex-column align-items-start">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 rsd-color"><strong>ISBNS</strong></h5>
+                          </div>
+                          <p class="mb-1 rsd-word-wrap">{{bd.isbns}}</p>
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row rsd-margin-bottom">
+                    <div class="col-sm-12">
+                      <hr>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                      <span class="rsd-review-date">Published on {{bd.pubDate | date}}</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
