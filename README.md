@@ -1,11 +1,26 @@
 # kalebr
-Technical Assessment tasks 
+
+Technical Assessment task
+
+After downloading, go to specified folder and run 'npm install'
+Then, run 'ng serve --open'
+It will navigate to http://localhost:4200/ and open in your default  browser
+
+It contain a build in dist/angular folder
+
+Live build path : [http://www.rishadkalebrproject.tk](http://www.rishadkalebrproject.tk)
+
+To take build, run 'ng build --prod --base-href' and it will store to dist/[Your-Folder-Name]
+
+For more info mail to mail@mohammedrishad.live
+
+OR
+
+Visit : [https://www.mohammedrishadkv.com](https://www.mohammedrishadkv.com)
 
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
-
-npm install
 
 ## Development server
 
