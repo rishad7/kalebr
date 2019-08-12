@@ -1,2 +1,4 @@
 # kalebr
-Technical Assessment tasks
+Technical Assessment tasks 
+
+npm install
